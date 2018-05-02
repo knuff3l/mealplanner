@@ -1,0 +1,13 @@
+extends layout
+
+block content
+    div.row.mb-3
+        div.col
+            a.btn.btn-outline-success.btn-large.btn-block(href='/rezepte')
+                i.fas.fa-utensils
+                span.pl-1= 'Rezepte'
+    div.row.mb-3
+        div.col
+            a.btn.btn-outline-primary.btn-large.btn-block(href='/planer')
+                i.far.fa-clipboard
+                span.pl-1='Mahlzeitplaner'

@@ -49,10 +49,9 @@ db.serialize(function(){
   }
 });
 
-// http://expressjs.com/en/starter/basic-routing.html
-app.get("/", function (request, response) {
-  response.sendFile(__dirname + '/views/index.html');
-});
+
+
+app.use('/', indexRouter);
 
 // endpoint to get all the dreams in the database
 // currently this is the only endpoint, ie. adding dreams won't update the database
@@ -62,6 +61,23 @@ app.get('/getDreams', function(request, response) {
     response.send(JSON.stringify(rows));
   });
 });
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  next(createError(404));
+});
+
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
+
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
