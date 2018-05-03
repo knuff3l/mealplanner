@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    div.row.mb-3
+        div.col.text-center
+            a.btn.btn-outline-success.btn-large(href='/rezepte/neu') Neues Rezept
+    div.row.mb-2
+        div.col
+            h3 Vorhande Rezepte
+    div.row
+        div.col
+            ul.list-group
+                each rezept in rezepte
+                    a.list-group-item.list-group-item-action.mb-1(href='rezepte/detail/'+rezept.id)=rezept.name
+

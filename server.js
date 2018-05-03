@@ -8,7 +8,8 @@ var bodyParser = require('body-parser');
 var app = express();
 
 var indexRouter = require('./routes/index');
-
+var rezepteRouter = require('./routes/rezepte');
+var planerRouter = require('./routes/planer');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -50,8 +51,14 @@ db.serialize(function(){
 });
 
 
-
+//Routen verteilen
 app.use('/', indexRouter);
+app.use('/rezepte',rezepteRouter);
+app.use('/planer',planerRouter);
+
+
+
+
 
 // endpoint to get all the dreams in the database
 // currently this is the only endpoint, ie. adding dreams won't update the database
