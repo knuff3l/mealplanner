@@ -14,4 +14,7 @@ block content
             ul.list-group
                 each rezept in rezepte
                     a.list-group-item.list-group-item-action.mb-1(href='rezepte/detail/'+rezept.id)=rezept.name
+    div.row.fixed-bottom
+     div.col
+       a.btn.btn-light.btn-lg.btn-block(href='/')="Zurück"
 
