@@ -12,4 +12,6 @@ var rezepteController = require('../controller/rezepteController');
 router.get('/',rezepteController.index);
 
 router.get('/detail/:id',rezepteController.detailPage);
+router.get('/create',rezepteController.rezept_create_get);
+router.post('/create',rezepteController.rezept_create_post);
 module.exports = router;
