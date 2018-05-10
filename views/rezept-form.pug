@@ -1,0 +1,31 @@
+extends layout
+
+block content
+    div.row
+        div.col.text-center
+            h1="Neues Rezept"
+    form(method='POST', action='')
+        div.form-group
+            label(for='name') Name:
+            input#name.form-control(type='text', name='name')
+        div.row
+            div.col
+                label Zutaten:
+        div.row
+            div.col
+                button(type='button').btn.btn-outline-primary
+                    i.fas.fa-plus
+                    span=" " + "Neue Zutat"
+        div.row.mt-3
+            div.col
+                label Zubereitung:
+        div.row
+            div.col
+                button(type='button').btn.btn-outline-primary
+                    i.fas.fa-plus
+                    span=" " + "Schritt hinzufügen"
+        div.row.mt-5
+            div.col
+                a.btn.btn-danger.btn-lg.btn-block(href='/rezepte')="Abbrechen"
+            div.col
+                button.btn.btn-success.btn-lg.btn-block(type='submit') Speichern

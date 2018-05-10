@@ -1,0 +1,28 @@
+extends layout
+
+block content
+    div.row
+        div.col.text-center
+            h2=name
+    div.row
+        div.col.text-center
+            div.card
+                div.card-body
+                    h5.card-title="Zutaten"
+                    ul.card-text.list-group
+                        each zutat in zutaten
+                            li.list-group-item=zutat.menge+" "+zutat.zutat
+    div.row.mt-3
+        div.col.text-center
+            div.card
+                div.card-body
+                    h5.card-title="Zubereitung"
+                    ul.card-text.list-group
+                        each arbeitsschritt,index in zubereitung
+                            li.list-group-item=(index+1)+".Schritt: "+ arbeitsschritt.schritt
+    div.row.mt-3
+        div.col-6
+            button(type="button").btn.btn-danger.btn-lg.btn-block="Löschen"
+        div.col-6
+            button(type="button").btn.btn-primary.btn-lg.btn-block="Bearbeiten"
+
