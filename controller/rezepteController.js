@@ -56,5 +56,8 @@ exports.rezept_create_get = function (req, res) {
     res.render('rezept-form');
 };
 exports.rezept_create_post = function (req, res) {
+    // res.send(req.body)
+    // console.log(req.body.zutaten);
+    console.log(req.body);
     res.send('Under construction post')
 };

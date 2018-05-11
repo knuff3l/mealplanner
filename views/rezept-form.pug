@@ -18,20 +18,27 @@ block content
                     span=" " + "Neue Zutat"
         div.row
             div.col#zutaten
-                div.row#header
-                    div.col-2.zubereitung-header.d-none
-                        h5 Menge
-                    div.col-3.zubereitung-header.d-none
-                        h5 Zutat
+                div.row.mt-2
+                    div.col-2.zutaten-header.d-none
+                        label Menge
+                    div.col-3.zutaten-header.d-none
+                        label Zutat
 
         div.row.mt-3
             div.col
                 label Zubereitung:
         div.row
             div.col
-                button(type='button').btn.btn-outline-primary
+                button(type='button', onclick='addZubereitung()').btn.btn-outline-primary
                     i.fas.fa-plus
                     span=" " + "Schritt hinzufügen"
+        div.row
+            div.col#zubereitung
+                div.row.mt-2
+                    div.col-1.zubereitung-header.d-none.text-center
+                        label #
+                    div.col-7.zubereitung-header.d-none
+                        label Beschreibung
         div.row.mt-5
             div.col
                 a.btn.btn-danger.btn-lg.btn-block(href='/rezepte')="Abbrechen"
@@ -39,3 +46,4 @@ block content
                 button.btn.btn-success.btn-lg.btn-block(type='submit') Speichern
     script
         include ../business/form/rezept-form.js
+

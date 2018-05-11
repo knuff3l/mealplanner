@@ -1,44 +1,35 @@
 addZutat = function () {
-    let zutatHeaders = document.getElementsByClassName('zubereitung-header');
-    Array.prototype.forEach.call(zutatHeaders,header => header.classList.remove('d-none'));
+    let zutatHeaders = document.getElementsByClassName('zutaten-header');
+    Array.prototype.forEach.call(zutatHeaders, header => header.classList.remove('d-none'));
 
     let zutatenHeaderRow = document.getElementById('zutaten');
-    let rowZutat=document.createElement('div');
-    let colMenge=document.createElement('div');
-    let colZutat=document.createElement('div');
-    let colRemove=document.createElement('div');
+    let countZutaten = zutatenHeaderRow.childElementCount;
+    let rowZutat = document.createElement('div');
+    let colMenge = createMengeField(countZutaten);
+    let colZutat = createZutatField(countZutaten);
+    let colRemove = document.createElement('div');
 
-    rowZutat.className='row mb-1';
-    colMenge.className='col-2';
-    colZutat.className='col-3';
-    colRemove.className='col';
+    rowZutat.className = 'row mb-1 zutat-item';
 
-    let inputMenge= document.createElement('input');
-    let inputZutat=document.createElement('input');
-    let removeButton=document.createElement('button');
-    let removeIcon=document.createElement('i');
+    colRemove.className = 'col';
 
-    removeIcon.className='fas fa-times-circle';
-    removeButton.className='btn btn-outline-danger';
-    removeButton.setAttribute('type','button');
-    removeButton.addEventListener('click',()=> {
-        // removeZutat(rowZutat);
-        document.getElementById('zutaten').removeChild(rowZutat);
+    let removeButton = document.createElement('button');
+    let removeIcon = document.createElement('i');
+
+    removeIcon.className = 'fas fa-times-circle';
+    removeButton.className = 'btn btn-outline-danger';
+    removeButton.setAttribute('type', 'button');
+    removeButton.addEventListener('click', () => {
+        document.getElementById('zutaten')
+                .removeChild(rowZutat);
+        if (zutatenHeaderRow.childElementCount === 1) {
+            Array.prototype.forEach.call(zutatHeaders, header => header.classList.add('d-none'));
+
+        }
     });
-
-    inputMenge.setAttribute('placeholder','Menge hier');
-    inputZutat.setAttribute('placeholder','Zutat hier');
-
-    inputMenge.setAttribute('type','text');
-    inputZutat.setAttribute('type','text');
-
-    inputMenge.className='form-control';
-    inputZutat.className='form-control';
 
     removeButton.appendChild(removeIcon);
     colRemove.appendChild(removeButton);
-    colMenge.appendChild(inputMenge);
-    colZutat.appendChild(inputZutat);
 
     rowZutat.appendChild(colMenge);
     rowZutat.appendChild(colZutat);
@@ -47,8 +38,113 @@ addZutat = function () {
     zutatenHeaderRow.append(rowZutat);
 };
 
-removeZutat = function (rowZutat) {
-    // console.log(rowZutat);
-    // document.getElementById('zutaten').removeChild(rowZutat);
+createMengeField = function (countZutat) {
+    let colMenge = document.createElement('div');
+    colMenge.className = 'col-2';
+
+    let inputMenge = document.createElement('input');
+
+    inputMenge.name='zutaten['+countZutat+'][menge]';
+    // inputMenge.name='zutaten';
+    inputMenge.setAttribute('placeholder', 'Menge hier');
+    inputMenge.setAttribute('type', 'text');
+    inputMenge.className = 'form-control';
+
+    colMenge.appendChild(inputMenge);
+
+    return colMenge;
+};
+
+createZutatField = function (countZutat) {
+
+    let colZutat = document.createElement('div');
+    colZutat.className = 'col-3';
+
+    let inputZutat = document.createElement('input');
+
+    inputZutat.name='zutaten['+countZutat+'][zutat]';
+    // inputZutat.name='zutaten';
+    inputZutat.setAttribute('placeholder', 'Zutat hier');
+    inputZutat.setAttribute('type', 'text');
+    inputZutat.className = 'form-control';
+    colZutat.appendChild(inputZutat);
+
+    return colZutat;
+};
+
+addZubereitung = function () {
+
+    let zubereitungHeaders = document.getElementsByClassName('zubereitung-header');
+    Array.prototype.forEach.call(zubereitungHeaders, header => header.classList.remove('d-none'));
+
+    let zubereitungHeaderRow = document.getElementById('zubereitung');
+    let countZubereitung = zubereitungHeaderRow.childElementCount;
+    let rowZubereitung = document.createElement('div');
+    let colSchritt = createSchrittField(countZubereitung);
+    let colBeschreibung = createBeschreibungField(countZubereitung);
+    let colRemove = document.createElement('div');
+
+    rowZubereitung.className = 'row mb-1 zubereitung-item';
+
+    colRemove.className = 'col';
+
+    let removeButton = document.createElement('button');
+    let removeIcon = document.createElement('i');
+
+    removeIcon.className = 'fas fa-times-circle';
+    removeButton.className = 'btn btn-outline-danger';
+    removeButton.setAttribute('type', 'button');
+    removeButton.addEventListener('click', () => {
+        document.getElementById('zubereitung')
+                .removeChild(rowZubereitung);
+
+        //TODO Update der Nummerierung
+
+        if (zubereitungHeaderRow.childElementCount === 1) {
+            Array.prototype.forEach.call(zubereitungHeaders, header => header.classList.add('d-none'));
+
+        }
+    });
+
+    removeButton.appendChild(removeIcon);
+    colRemove.appendChild(removeButton);
+
+    rowZubereitung.appendChild(colSchritt);
+    rowZubereitung.appendChild(colBeschreibung);
+    rowZubereitung.appendChild(colRemove);
+
+    zubereitungHeaderRow.append(rowZubereitung);
+
 
 };
+
+createSchrittField = function (countZubereitung) {
+
+    let colSchritt = document.createElement('div');
+    colSchritt.className = 'col-1 text-center';
+
+    let counterEl= document.createElement('h5');
+    counterEl.className='form-control';
+    let text = document.createTextNode(countZubereitung);
+    counterEl.appendChild(text);
+    colSchritt.appendChild(counterEl);
+
+    return colSchritt;
+};
+
+createBeschreibungField = function (countZubereitung) {
+
+
+    let colBeschreibung = document.createElement('div');
+    colBeschreibung.className = 'col-7';
+
+    let inputBeschreibung = document.createElement('input');
+
+    inputBeschreibung.name='zubereitung['+countZubereitung+']';
+    inputBeschreibung.setAttribute('placeholder', 'Beschreibung hier');
+    inputBeschreibung.setAttribute('type', 'text');
+    inputBeschreibung.className = 'form-control';
+    colBeschreibung.appendChild(inputBeschreibung);
+
+    return colBeschreibung;
+}
