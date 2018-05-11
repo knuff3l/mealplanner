@@ -13,9 +13,17 @@ block content
                 label Zutaten:
         div.row
             div.col
-                button(type='button').btn.btn-outline-primary
+                button(type='button', onclick='addZutat()').btn.btn-outline-primary
                     i.fas.fa-plus
                     span=" " + "Neue Zutat"
+        div.row
+            div.col#zutaten
+                div.row#header
+                    div.col-2.zubereitung-header.d-none
+                        h5 Menge
+                    div.col-3.zubereitung-header.d-none
+                        h5 Zutat
+
         div.row.mt-3
             div.col
                 label Zubereitung:
@@ -29,3 +37,5 @@ block content
                 a.btn.btn-danger.btn-lg.btn-block(href='/rezepte')="Abbrechen"
             div.col
                 button.btn.btn-success.btn-lg.btn-block(type='submit') Speichern
+    script
+        include ../business/form/rezept-form.js
