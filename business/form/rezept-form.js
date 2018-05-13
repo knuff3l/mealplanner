@@ -11,7 +11,7 @@ addZutat = function () {
 
     rowZutat.className = 'row mb-1 zutat-item';
 
-    colRemove.className = 'col';
+    colRemove.className = 'col-2';
 
     let removeButton = document.createElement('button');
     let removeIcon = document.createElement('i');
@@ -40,7 +40,7 @@ addZutat = function () {
 
 createMengeField = function (countZutat) {
     let colMenge = document.createElement('div');
-    colMenge.className = 'col-2';
+    colMenge.className = 'col-5';
 
     let inputMenge = document.createElement('input');
 
@@ -58,7 +58,7 @@ createMengeField = function (countZutat) {
 createZutatField = function (countZutat) {
 
     let colZutat = document.createElement('div');
-    colZutat.className = 'col-3';
+    colZutat.className = 'col-5';
 
     let inputZutat = document.createElement('input');
 
