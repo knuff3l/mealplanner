@@ -86,7 +86,7 @@ addZubereitung = function () {
 
     rowZubereitung.className = 'row mb-1 zubereitung-item';
 
-    colRemove.className = 'col';
+    colRemove.className = 'col-2';
 
     let removeButton = document.createElement('button');
     let removeIcon = document.createElement('i');
@@ -124,10 +124,10 @@ addZubereitung = function () {
 createSchrittField = function (countZubereitung) {
 
     let colSchritt = document.createElement('div');
-    colSchritt.className = 'col-1 text-center';
+    colSchritt.className = 'col-2 text-center pt-1';
 
     let counterEl = document.createElement('h5');
-    counterEl.className = 'form-control list-number';
+    counterEl.className = 'list-number';
     let text = document.createTextNode((countZubereitung + 1));
     counterEl.appendChild(text);
     colSchritt.appendChild(counterEl);
@@ -139,7 +139,7 @@ createBeschreibungField = function (countZubereitung) {
 
 
     let colBeschreibung = document.createElement('div');
-    colBeschreibung.className = 'col-7';
+    colBeschreibung.className = 'col-8';
 
     let inputBeschreibung = document.createElement('input');
 
