@@ -17,12 +17,13 @@ block content
                     i.fas.fa-plus
                     span=" " + "Neue Zutat"
         div.row
-            div.col#zutaten
+            div.col
                 div.row.mt-2
                     div.col-2.zutaten-header.d-none
                         label Menge
                     div.col-3.zutaten-header.d-none
                         label Zutat
+                div#zutaten
 
         div.row.mt-3
             div.col
@@ -33,12 +34,13 @@ block content
                     i.fas.fa-plus
                     span=" " + "Schritt hinzufügen"
         div.row
-            div.col#zubereitung
+            div.col
                 div.row.mt-2
                     div.col-1.zubereitung-header.d-none.text-center
                         label #
                     div.col-7.zubereitung-header.d-none
                         label Beschreibung
+                div#zubereitung
         div.row.mt-5
             div.col
                 a.btn.btn-danger.btn-lg.btn-block(href='/rezepte')="Abbrechen"

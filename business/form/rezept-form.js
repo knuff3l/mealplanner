@@ -22,7 +22,7 @@ addZutat = function () {
     removeButton.addEventListener('click', () => {
         document.getElementById('zutaten')
                 .removeChild(rowZutat);
-        if (zutatenHeaderRow.childElementCount === 1) {
+        if (zutatenHeaderRow.childElementCount === 0) {
             Array.prototype.forEach.call(zutatHeaders, header => header.classList.add('d-none'));
 
         }
@@ -44,7 +44,7 @@ createMengeField = function (countZutat) {
 
     let inputMenge = document.createElement('input');
 
-    inputMenge.name='zutaten['+countZutat+'][menge]';
+    inputMenge.name = 'zutaten[' + countZutat + '][menge]';
     // inputMenge.name='zutaten';
     inputMenge.setAttribute('placeholder', 'Menge hier');
     inputMenge.setAttribute('type', 'text');
@@ -62,7 +62,7 @@ createZutatField = function (countZutat) {
 
     let inputZutat = document.createElement('input');
 
-    inputZutat.name='zutaten['+countZutat+'][zutat]';
+    inputZutat.name = 'zutaten[' + countZutat + '][zutat]';
     // inputZutat.name='zutaten';
     inputZutat.setAttribute('placeholder', 'Zutat hier');
     inputZutat.setAttribute('type', 'text');
@@ -98,9 +98,12 @@ addZubereitung = function () {
         document.getElementById('zubereitung')
                 .removeChild(rowZubereitung);
 
-        //TODO Update der Nummerierung
+        Array.prototype.forEach.call(document.getElementsByClassName('list-number'), (item, index) => {
+            item.innerHTML = index + 1;
+        });
 
-        if (zubereitungHeaderRow.childElementCount === 1) {
+
+        if (zubereitungHeaderRow.childElementCount === 0) {
             Array.prototype.forEach.call(zubereitungHeaders, header => header.classList.add('d-none'));
 
         }
@@ -123,9 +126,9 @@ createSchrittField = function (countZubereitung) {
     let colSchritt = document.createElement('div');
     colSchritt.className = 'col-1 text-center';
 
-    let counterEl= document.createElement('h5');
-    counterEl.className='form-control';
-    let text = document.createTextNode(countZubereitung);
+    let counterEl = document.createElement('h5');
+    counterEl.className = 'form-control list-number';
+    let text = document.createTextNode((countZubereitung + 1));
     counterEl.appendChild(text);
     colSchritt.appendChild(counterEl);
 
@@ -140,11 +143,11 @@ createBeschreibungField = function (countZubereitung) {
 
     let inputBeschreibung = document.createElement('input');
 
-    inputBeschreibung.name='zubereitung['+countZubereitung+']';
+    inputBeschreibung.name = 'zubereitung[' + countZubereitung + ']';
     inputBeschreibung.setAttribute('placeholder', 'Beschreibung hier');
     inputBeschreibung.setAttribute('type', 'text');
     inputBeschreibung.className = 'form-control';
     colBeschreibung.appendChild(inputBeschreibung);
 
     return colBeschreibung;
-}
+};
